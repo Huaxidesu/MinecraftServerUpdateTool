@@ -1,0 +1,11 @@
+{
+  "sourceDir": "D:\\Develop\\Game\\update\\dsmgtnhupdate\\overrides",
+  "exportDir": "D:\\Develop\\Game\\update\\dsmgtnhupdate",
+  "fileApi": "https://git.dafeimao.net/huaxidesu/dsmgtnhupdate/raw/branch/main/",
+  "manifestFile": "server-manifest.json",
+  "hashCacheFile": ".manifest-hash-cache.json",
+  "hashThreads": 8,
+  "updaterSource": "client/update/updater.py",
+  "clientManifest": "client/server-manifest.json",
+  "clientBaselineVersion": "1.0"
+}

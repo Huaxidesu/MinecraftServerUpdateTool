@@ -1,0 +1,20 @@
+{
+  "version": "2",
+  "noOverwriteFiles": [
+    "options.txt",
+    "shaderpacks/*.txt",
+    "config/iris.properties",
+    "local/",
+    "optionsnf.txt",
+    "visualprospectin/*",
+    "config/hud.txt",
+    "config/InGameInfoXML.cfg",
+    "journeymap/*",
+    "localconfig.cfg",
+    "BotaniaVars.dat",
+    "config/vendingmachine/favourites",
+    "journeymap/"
+  ],
+  "forceDelete": [
+  ]
+}
