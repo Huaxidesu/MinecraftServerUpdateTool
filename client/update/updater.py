@@ -14,7 +14,7 @@ from pathlib import Path
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-# ======================= 配置区 =======================
+# ---- 配置区 ----
 
 UPDATER_VERSION = '2.4'
 
@@ -72,7 +72,7 @@ if sys.platform == 'win32':
         # 如果失败，禁用颜色
         Colors.CYAN = Colors.GREEN = Colors.YELLOW = Colors.RED = Colors.GRAY = Colors.RESET = Colors.BOLD = ''
 
-# ===================== 工具函数 =====================
+# ---- 工具函数 ----
 
 def print_color(text, color=Colors.RESET):
     """彩色打印"""
@@ -691,7 +691,7 @@ def remove_obsolete_files(old_manifest, new_manifest, mc_dir, no_overwrite_files
 def remove_retired_files(new_manifest, mc_dir, keep_patterns, verbose=False):
     """删除导出器发布的「已废弃文件」清单里的路径。
 
-    清单在服务器清单的 removedFiles 字段里累积发布，**与客户端本地清单无关**，
+    清单在服务器清单的 removedFiles 字段里累积发布，与客户端本地清单无关，
     所以不管玩家从哪个版本开始更新，跑一次就能收敛（不会因为跨版本而漏删）。
     名单只包含「包里曾经有过、现在不要了」的文件，玩家自己加的东西不在里面。
     """
@@ -906,7 +906,7 @@ def ask_retry_failed_files(failed_files, verbose=False):
     return answer in ('y', 'yes')
 
 
-# ===================== 主函数 =====================
+# ---- 主函数 ----
 
 def save_local_manifest(server_manifest, local_manifest_path):
     """把服务器清单落盘为本地更新记录，并记下本次应用的更新器版本。
@@ -1089,7 +1089,7 @@ def main():
         print()
 
     # 删除「已废弃文件」：清单由导出器累积发布在服务器清单的 removedFiles 里，
-    # 与客户端本地清单无关，所以**每次都跑**（不是只有版本变化才清）。
+    # 与客户端本地清单无关，所以每次都跑（不是只有版本变化才清）。
     # 这样玩家从任意版本开始更新都能一次收敛，跨版本也不会漏删。
     keep_patterns = list(no_overwrite_files) + list(player_keep_files)
     retired_count = remove_retired_files(server_manifest, mc_dir, keep_patterns, verbose)
@@ -1097,7 +1097,7 @@ def main():
         print_color(f'已清理 {retired_count} 个已废弃文件', Colors.GREEN)
         print()
 
-    # 兼容兜底：老清单没有 removedFiles 字段时，仍按本地清单做差集。
+    # 兼容后备：老清单没有 removedFiles 字段时，仍按本地清单做差集。
     removed_count = 0
     if is_version_update:
         removed_count = remove_obsolete_files(local_manifest, server_manifest, mc_dir, no_overwrite_files)
